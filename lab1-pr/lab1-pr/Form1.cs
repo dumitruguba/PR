@@ -104,7 +104,40 @@ namespace lab1_pr
             if (bmp != null)
             {
                 GrayscaleBT709 gray = new GrayscaleBT709();
-                image.Image = gray.Apply((Bitmap)image.Image);
+                image.Image = gray.Apply(bmp);
+            }
+        }
+
+        private void sepiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bmp != null)
+            {
+                Sepia sepia = new Sepia();
+                image.Image = sepia.Apply(bmp);
+            }
+        }
+
+        private void originalImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            image.Image = bmp;
+            
+        }
+
+        private void blurImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bmp != null)
+            {
+                Blur blur = new Blur();
+                image.Image = blur.Apply(bmp);
+            }
+        }
+
+        private void invertColorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bmp != null)
+            {
+                Invert invert = new Invert();
+                image.Image = invert.Apply(bmp);
             }
         }
     }
