@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AForge.Imaging.ComplexFilters;
+using AForge;
+using AForge.Imaging;
+using AForge.Imaging.Filters;
 
 namespace lab1_pr
 {
@@ -45,6 +49,7 @@ namespace lab1_pr
                 image.Width = bmp.Width;
                 image.Height = bmp.Height;
                 image.Image = bmp;
+                open.Dispose();
             }
                
         }
@@ -91,6 +96,15 @@ namespace lab1_pr
                         fs.Close();
                     }
                 }
+            }
+        }
+
+        private void grayscaleImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bmp != null)
+            {
+                GrayscaleBT709 gray = new GrayscaleBT709();
+                image.Image = gray.Apply((Bitmap)image.Image);
             }
         }
     }
